@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 
 function Header() {
+  const user = false;
   return (
     <Menu fluid id="menu" inverted>
       <Container text>
@@ -13,12 +14,14 @@ function Header() {
           </Menu.Item>
         </Link> 
 
+
         <Link href="/cart">
           <Menu.Item header>
             <icon name="cart" size="large"/>
             Cart
           </Menu.Item>
         </Link>
+
 
         <Link href="/create">
           <Menu.Item header>
@@ -27,6 +30,8 @@ function Header() {
           </Menu.Item>
         </Link> 
 
+
+        {user ? (<>
         <Link href="/account">
           <Menu.Item header>
             <Icon name="user" size="large"/>
@@ -34,11 +39,14 @@ function Header() {
           </Menu.Item>
         </Link> 
 
+
         <Menu.Item header>
           <Icon name="sign out" size="large"/>
           Logout
         </Menu.Item>
-
+        </>)
+        :
+        (<>
         <Menu.Item header>
           <Icon name="sign in" size="large"/>
           Login
@@ -50,6 +58,7 @@ function Header() {
             Signup
           </Menu.Item>
         </Link>
+        </>)}
         
 
 
