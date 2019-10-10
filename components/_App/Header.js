@@ -17,18 +17,20 @@ function Header() {
 
         <Link href="/cart">
           <Menu.Item header>
-            <icon name="cart" size="large"/>
+            <Icon name="cart" size="large"/>
             Cart
           </Menu.Item>
         </Link>
 
 
-        <Link href="/create">
-          <Menu.Item header>
-            <icon name="add square" size="large"/>
-            Create
-          </Menu.Item>
-        </Link> 
+        {user && (
+          <Link href="/create">
+            <Menu.Item header>
+              <Icon name="add square" size="large"/>
+              Create
+            </Menu.Item>
+          </Link> 
+        )} 
 
 
         {user ? (<>
@@ -47,10 +49,12 @@ function Header() {
         </>)
         :
         (<>
-        <Menu.Item header>
-          <Icon name="sign in" size="large"/>
-          Login
-        </Menu.Item>
+        <Link href="/login">
+          <Menu.Item header>
+            <Icon name="sign in" size="large" />
+            Login
+          </Menu.Item>
+        </Link>
 
         <Link href="/signup">
           <Menu.Item header>
