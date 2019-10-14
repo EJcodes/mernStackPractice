@@ -58,6 +58,12 @@ function Header() {
               <Icon name="sign out" size="large" />
               Logout
             </Menu.Item>
+            <Link href="/seasonSchedule">
+              <Menu.Item header active={isActive("/SeasonSchedule")}>
+                <Icon name="signup" size="large" />
+                Season Schedule
+              </Menu.Item>
+            </Link>
           </>
         ) : (
           <>
@@ -74,6 +80,7 @@ function Header() {
                 Signup
               </Menu.Item>
             </Link>
+           
           </>
         )}
       </Container>
