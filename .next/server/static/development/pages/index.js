@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -110,25 +110,36 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-function Home() {
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(() => {
-    getProducts();
-  }, []);
-
-  async function getProducts() {
-    const url = "http://localhost:3000/api/products";
-    const response = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
-    console.log(response.data);
-  }
+function Home({
+  products
+}) {
+  console.log(products); // React.useEffect(() => {
+  //   getProducts();
+  // }, []);
+  // async function getProducts() {
+  //   const url = "http://localhost:3000/api/products";
+  //   const response = await axios.get(url);
+  //   console.log(response.data);
+  // }
 
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "home");
 }
+
+Home.getInitialProps = async () => {
+  //fetch data on server 
+  //return response data as an object
+  const url = "http://localhost:3000/api/products";
+  const response = await axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
+  return {
+    products: response.data
+  }; // note: this object will be merged with existing props 
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
