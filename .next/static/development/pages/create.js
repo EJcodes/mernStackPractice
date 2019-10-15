@@ -56,7 +56,7 @@ function CreateProduct() {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!****************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcreate&absolutePagePath=%2FUsers%2Fevanlondono%2FDocuments%2FCode%2FmernStackPractice%2FmernStackPractice%2Fpages%2Fcreate.js ***!
   \****************************************************************************************************************************************************************************/
@@ -79,5 +79,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=create.js.map
