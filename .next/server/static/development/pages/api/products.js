@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -107,6 +107,7 @@ var _static_products_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/
 /* harmony import */ var _utils_connectDb__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/connectDb */ "./utils/connectDb.js");
 
 ;
+ //why isn't my commits showing on github?????
 
 Object(_utils_connectDb__WEBPACK_IMPORTED_MODULE_1__["default"])();
 /* harmony default export */ __webpack_exports__["default"] = ((req, res) => {
@@ -163,14 +164,14 @@ async function connectDb() {
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!*************************************!*\
   !*** multi ./pages/api/products.js ***!
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/pages/api/products.js */"./pages/api/products.js");
+module.exports = __webpack_require__(/*! /Users/evanlondono/Documents/Code/mernStackPractice/pages/api/products.js */"./pages/api/products.js");
 
 
 /***/ }),

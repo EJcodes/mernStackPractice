@@ -88,10 +88,56 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/Index/ProductList.js":
+/*!*****************************************!*\
+  !*** ./components/Index/ProductList.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/components/Index/ProductList.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+function ProductList({
+  products
+}) {
+  function mapProductsToItems(products) {
+    return products.map(product => ({
+      header: product.name,
+      image: product.mediaUrl,
+      color: 'teal',
+      fluid: true,
+      childKey: product._id,
+      href: `/product?_id=${product._id}`
+    }));
+  }
+
+  return __jsx(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Group, {
+    items: mapProductsToItems(products),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ProductList);
+
+/***/ }),
 
 /***/ "./pages/index.js":
 /*!************************!*\
@@ -106,23 +152,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Index_ProductList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Index/ProductList */ "./components/Index/ProductList.js");
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
 function Home({
   products
 }) {
-  console.log(products); // React.useEffect(() => {
-  //   getProducts();
-  // }, []);
-  // async function getProducts() {
-  //   const url = "http://localhost:3000/api/products";
-  //   const response = await axios.get(url);
-  //   console.log(response.data);
-  // }
-
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "home");
+  return __jsx(_components_Index_ProductList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    products: products,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  });
 }
 
 Home.getInitialProps = async () => {
@@ -139,14 +186,14 @@ Home.getInitialProps = async () => {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/evanlondono/Documents/Code/mernStackPractice/pages/index.js */"./pages/index.js");
 
 
 /***/ }),
@@ -170,6 +217,17 @@ module.exports = require("axios");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "semantic-ui-react":
+/*!************************************!*\
+  !*** external "semantic-ui-react" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("semantic-ui-react");
 
 /***/ })
 

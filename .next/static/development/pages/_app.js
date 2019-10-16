@@ -11,7 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/components/_App/HeadContent.js";
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/components/_App/HeadContent.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -192,7 +192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! nprogress */ "./node_modules/nprogress/nprogress.js");
 /* harmony import */ var nprogress__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(nprogress__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/components/_App/Header.js";
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/components/_App/Header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -438,7 +438,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./components/_App/Header.js");
 /* harmony import */ var _HeadContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./HeadContent */ "./components/_App/HeadContent.js");
-var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/components/_App/Layout.js";
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/components/_App/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -59514,7 +59514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/mernStackPractice/pages/_app.js";
+var _jsxFileName = "/Users/evanlondono/Documents/Code/mernStackPractice/pages/_app.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
