@@ -118,6 +118,7 @@ function ProductList({
     return products.map(product => ({
       header: product.name,
       image: product.mediaUrl,
+      meta: `$${product.price}`,
       color: 'teal',
       fluid: true,
       childKey: product._id,
@@ -126,10 +127,13 @@ function ProductList({
   }
 
   return __jsx(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Group, {
+    stackable: true,
+    itemsPerRow: "3",
+    centered: true,
     items: mapProductsToItems(products),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 16
     },
     __self: this
   });

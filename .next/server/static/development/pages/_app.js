@@ -307,6 +307,7 @@ function Header() {
   }
 
   return __jsx(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"], {
+    stackable: true,
     fluid: true,
     id: "menu",
     inverted: true,

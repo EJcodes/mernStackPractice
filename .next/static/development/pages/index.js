@@ -25,6 +25,7 @@ function ProductList(_ref) {
       return {
         header: product.name,
         image: product.mediaUrl,
+        meta: "$".concat(product.price),
         color: 'teal',
         fluid: true,
         childKey: product._id,
@@ -34,10 +35,13 @@ function ProductList(_ref) {
   }
 
   return __jsx(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Group, {
+    stackable: true,
+    itemsPerRow: "3",
+    centered: true,
     items: mapProductsToItems(products),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 16
     },
     __self: this
   });
