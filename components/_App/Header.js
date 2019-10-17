@@ -23,9 +23,8 @@ function Header() {
             <Image
               size="mini"
               src="/static/logo.svg"
-              style={{ marginRight: "1em" }}
-            />
-            ReactReserve
+              style={{ marginRight: "1em" }}/>
+            Kaola Kickball
           </Menu.Item>
         </Link>
 

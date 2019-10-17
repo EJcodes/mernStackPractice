@@ -1,4 +1,4 @@
-function SeasonSchedule() {
+function seasonSchedule() {
     return <>Season Schedule</>;
   }
   
