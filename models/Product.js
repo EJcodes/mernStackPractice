@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import shortid from 'shortIid'
+import shortid from 'shortid'
 
 
 const { String, Number } = mongoose.Schema.Types;
