@@ -6,14 +6,14 @@ import { useRouter } from 'next/router'
 
 
 function ProductAttributes({ description, _id }) {
-  const [modal, setModal] = React.useState(false)
+  const [modal, setModal] = React.useState(false);
   const router = useRouter()
 
   async function handleDelete() {
     const url = `${baseUrl}/api/product`
     const payload = { params: { _id } }
     await axios.delete(url, payload)
-    router.push('/');
+    router.push("/");
 
   }
   return (
@@ -33,7 +33,7 @@ function ProductAttributes({ description, _id }) {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={()=> setModal(false)}content="Cancel"/>
-          <Button negative icon="trash" labelPosition="right" content="Delete" />
+          <Button negative icon="trash" labelPosition="right" content="Delete" onClick={handleDelete}/>
           
         </Modal.Actions>
 
