@@ -7,8 +7,8 @@ const INITIAL_PRODUCT = {
   name: "",
   price:"",
   media:" ",
-  descripition: "" 
-}
+  description: "" 
+};
 
 function CreateProduct() {
   const [product, setProduct] = React.useState(INITIAL_PRODUCT);
@@ -18,7 +18,7 @@ function CreateProduct() {
 
   function handleChange(event) {
     const{  name, value, files } = event.target;
-    if(name === 'media'){
+    if(name === "media"){
       setProduct(prevState => ({...prevState, media: files[0] }));
       setMediaPreview(window.URL.createObjectURL(files[0]));
     } else {
@@ -42,7 +42,7 @@ function CreateProduct() {
     const mediaUrl = await handleImageUpload();
     console.log(mediaUrl); 
     const url = `${baseUrl}/api/product`
-    const { name, price, description } = product
+    const { name, price, description } = product;
     const payload = { name, price, description, mediaUrl };
     const response = await axios.post(url, payload);
     console.log({response})
@@ -56,24 +56,26 @@ function CreateProduct() {
       <Icon name="add" color="orange"/>
       Create New Product </Header>
       <Form loading={loading} success={success} onSubmit={handleSubmit}>
-        <Message success icon="check" header="success!" content="Your Content has been posted"/>
+        <Message success icon="check" header="Success!" content="Your Content has been posted"/>
         <Form.Group width="equal">
-          <Form.Field control={Input}
+          <Form.Field 
+          control={Input}
           name="name"
           label="Name"
           placeholder="Name"
           value={product.name}
           onChange={handleChange}
           />
-          <Form.Field control={Input}
+          <Form.Field 
+          control={Input}
           name="price"
           label="Price"
           placeholder="Price"
-          value={product.price}
-          onChange={handleChange}
           min="0.00"
           step="0.01"
           type="number"
+          value={product.price}
+          onChange={handleChange}
           />
           <Form.Field control={Input}
           control={Input}

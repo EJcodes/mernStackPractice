@@ -3,9 +3,6 @@ import connectDb from '../../utils/connectDb';
 
 connectDb();
 
-
-// testing and trying to fix these ghost commits
-
 export default async (req, res) => {
     switch (req.method) {
         case "GET":
@@ -21,7 +18,7 @@ export default async (req, res) => {
             res.status(405).send(`Method ${req.method} not allowed`); 
             break;
     }
-}
+};
 
 async function handleGetRequest(req, res) {
       const { _id } = req.query;
@@ -39,14 +36,14 @@ async function handlePostRequest(req, res){
         price,
         description,
         mediaUrl
-    }).save()
-    res.status(201).json(product)
+    }).save();
+    res.status(201).json(product);
 }
 
 async function handleDeleteRequest(req, res) {
     const { _id } = req.query;
-    await Product.findOneAndDelete({ _id })
-    res.status(204).json({})
+    await Product.findOneAndDelete({ _id });
+    res.status(204).json({});
 }
 
 
