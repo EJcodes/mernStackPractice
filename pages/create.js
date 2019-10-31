@@ -37,9 +37,10 @@ async function handleImageUpload() {
 async function handleSubmit(event) {
   event.preventDefault();
   const mediaUrl = await handleImageUpload();
-  const url = `${baseUrl}/api/product`
-  const payload = { ...product, mediaUrl };
-  await axios.post(url, payload);
+  console.log(mediaUrl);
+  // const url = `${baseUrl}/api/product`
+  // const payload = { ...product, mediaUrl };
+  // await axios.post(url, payload);
   setProduct(INITIAL_PRODUCT)
   setSuccess(true)
 }
