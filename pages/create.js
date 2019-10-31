@@ -14,6 +14,7 @@ function CreateProduct() {
   const [product, setProduct] = React.useState(INITIAL_PRODUCT);
   const [mediaPreview, setMediaPreview] = React.useState("");
   const [success, setSuccess] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   function handleChange(event) {
     const{  name, value, files } = event.target;
@@ -21,36 +22,40 @@ function CreateProduct() {
       setProduct(prevState => ({...prevState, media: files[0] }));
       setMediaPreview(window.URL.createObjectURL(files[0]));
     } else {
-
-    setProduct(prevState => ({ ...prevState, [name]: value}));
+      setProduct(prevState => ({ ...prevState, [name]: value}));
   }
-}
-async function handleImageUpload() {
-  const data = new FormData()
-  data.append('file', product.media)
-  data.append('upload_preset', 'KaolaKickball')
-  data.append('cloud_name','drll6nq6j')
-  const response = await axios.post(process.env.CLOUDINARY_URL, data)
-  const mediaUrl = response.data.url
-  return mediaUrl;
-}
+  }
 
-async function handleSubmit(event) {
-  event.preventDefault();
-  const mediaUrl = await handleImageUpload();
-  console.log(mediaUrl); 
-  const url = `${baseUrl}/api/product`
-  const payload = { ...product, mediaUrl };
-  await axios.post(url, payload);
-  setProduct(INITIAL_PRODUCT)
-  setSuccess(true)
-}
+  async function handleImageUpload() {
+    const data = new FormData()
+    data.append('file', product.media)
+    data.append('upload_preset', 'KaolaKickball')
+    data.append('cloud_name','drll6nq6j')
+    const response = await axios.post(process.env.CLOUDINARY_URL, data)
+    const mediaUrl = response.data.url
+    return mediaUrl;
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setLoading(true);
+    const mediaUrl = await handleImageUpload();
+    console.log(mediaUrl); 
+    const url = `${baseUrl}/api/product`
+    const { name, price, description } = product
+    const payload = { name, price, description, mediaUrl };
+    const response = await axios.post(url, payload);
+    console.log({response})
+    setLoading(false);
+    setProduct(INITIAL_PRODUCT)
+    setSuccess(true);
+  }
   return (
   <>
     <Header as="h2" block>
       <Icon name="add" color="orange"/>
       Create New Product </Header>
-      <Form success={success} onSubmit={handleSubmit}>
+      <Form loading={loading} success={success} onSubmit={handleSubmit}>
         <Message success icon="check" header="success!" content="Your Content has been posted"/>
         <Form.Group width="equal">
           <Form.Field control={Input}
@@ -91,6 +96,7 @@ async function handleSubmit(event) {
        />
        <Form.Field
           control={Button}
+          disabled={loading}
           color="blue"
           icon="pencil alternate"
           content="Submit"
