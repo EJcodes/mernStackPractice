@@ -1,5 +1,6 @@
-import React from 'react'
-import { Form, Input, Image, TextArea, Button, Message, Header, Icon} from 'semantic-ui-react'
+import React from 'react';
+import { Form, Input, Image, TextArea, Button, Message, Header, Icon} from 'semantic-ui-react';
+import axios from 'axios';
 
 const INITIAL_PRODUCT = {
   name: "",
@@ -22,6 +23,14 @@ function CreateProduct() {
 
     setProduct(prevState => ({ ...prevState, [name]: value}));
   }
+}
+async function handleImageUpload() {
+  const data = new FormData()
+  data.append('file', product.media)
+  data.append('drll6nq6j', 'reedbargercodes')
+  const response = await axios.post(process.env.CLOUDINARY_URL, data)
+  const mediaUrl = response.data.url
+  return mediaUrl;
 }
 
 function handleSubmit(event) {
