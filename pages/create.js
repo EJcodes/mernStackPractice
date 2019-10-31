@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Image, TextArea, Button, Message, Header, Icon} from 'semantic-ui-react';
 import axios from 'axios';
+import baseUrl from '../utils/baseUrl'
 
 const INITIAL_PRODUCT = {
   name: "",
@@ -33,9 +34,12 @@ async function handleImageUpload() {
   return mediaUrl;
 }
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
-  console.log(product)
+  const mediaUrl = await handleImageUpload();
+  const url = `${baseUrl}/api/product`
+  const payload = { ...product, mediaUrl };
+  await axios.post(url, payload);
   setProduct(INITIAL_PRODUCT)
   setSuccess(true)
 }
