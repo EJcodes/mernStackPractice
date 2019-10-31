@@ -28,7 +28,7 @@ function CreateProduct() {
 async function handleImageUpload() {
   const data = new FormData()
   data.append('file', product.media)
-  data.append('drll6nq6j', 'reedbargercodes')
+  data.append('cloud_name','drll6nq6j')
   const response = await axios.post(process.env.CLOUDINARY_URL, data)
   const mediaUrl = response.data.url
   return mediaUrl;
@@ -37,10 +37,10 @@ async function handleImageUpload() {
 async function handleSubmit(event) {
   event.preventDefault();
   const mediaUrl = await handleImageUpload();
-  console.log(mediaUrl);
-  // const url = `${baseUrl}/api/product`
-  // const payload = { ...product, mediaUrl };
-  // await axios.post(url, payload);
+  console.log(mediaUrl); 
+  const url = `${baseUrl}/api/product`
+  const payload = { ...product, mediaUrl };
+  await axios.post(url, payload);
   setProduct(INITIAL_PRODUCT)
   setSuccess(true)
 }
