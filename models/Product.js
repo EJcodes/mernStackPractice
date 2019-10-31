@@ -21,9 +21,13 @@ const ProductSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    mediaUrl: {
+        type: String,
+        required: true
     }
 
-})
+});
 
 
 export default mongoose.models.Product || mongoose.model('Product', ProductSchema)

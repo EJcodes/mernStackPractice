@@ -32,20 +32,20 @@ function CreateProduct() {
     data.append('upload_preset', 'KaolaKickball')
     data.append('cloud_name','drll6nq6j')
     const response = await axios.post(process.env.CLOUDINARY_URL, data)
-    const mediaUrl = response.data.url
+    const mediaUrl = response.data.url;
     return mediaUrl;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    const mediaUrl = await handleImageUpload();
-    console.log(mediaUrl); 
+    const mediaUrl = await handleImageUpload()
+    console.log({ mediaUrl }); 
     const url = `${baseUrl}/api/product`
-    const { name, price, description } = product;
+    const { name, price, description } = product
     const payload = { name, price, description, mediaUrl };
     const response = await axios.post(url, payload);
-    console.log({response})
+    console.log({ response });
     setLoading(false);
     setProduct(INITIAL_PRODUCT)
     setSuccess(true);
@@ -83,7 +83,7 @@ function CreateProduct() {
           type="file"
           label="Media"
           accept="image/*"
-          placeholder="Media"
+          content="Select Image"
           onChange={handleChange}
           /> 
         </Form.Group>
