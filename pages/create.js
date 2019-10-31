@@ -28,6 +28,7 @@ function CreateProduct() {
 async function handleImageUpload() {
   const data = new FormData()
   data.append('file', product.media)
+  data.append('upload_preset', 'KaolaKickball')
   data.append('cloud_name','drll6nq6j')
   const response = await axios.post(process.env.CLOUDINARY_URL, data)
   const mediaUrl = response.data.url
