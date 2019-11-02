@@ -300,7 +300,7 @@ next_router__WEBPACK_IMPORTED_MODULE_3___default.a.onRouteChangeError = () => np
 
 function Header() {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
-  const user = true;
+  const user = false;
 
   function isActive(route) {
     return route === router.pathname;
