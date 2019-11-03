@@ -1,6 +1,7 @@
 import connectDb from '../../utils/connectDb';
 import User from '../../models/User';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 
 
 
@@ -25,6 +26,7 @@ export default async (req, res) => {
         }).save()
         console.log({newUser})
         // 4) create a token for the new user
+         jwt.sign({ userId: newUser._id })
         // 5) send back token 
     } catch (error)  {
 
