@@ -1,5 +1,6 @@
 import connectDb from '../../utils/connectDb';
 import User from '../../models/User';
+import bcrypt from 'bcrypt';
 
 
 
@@ -15,7 +16,14 @@ export default async (req, res) => {
             return res.status(422).send(`User already exists with email ${email}`)
         }
         // 2) -- if not , hash their password
+        const hash = await bcrypt.hash(password, 10)
         // 3) create user 
+        const newUser = await new User({
+            name,
+            email,
+            password: hash
+        }).save()
+        console.log({newUser})
         // 4) create a token for the new user
         // 5) send back token 
     } catch (error)  {
