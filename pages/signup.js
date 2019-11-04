@@ -6,6 +6,7 @@ import catchErrors from '../utils/catchErrors';
 import  baseUrl from '../utils/baseUrl';
 import { handleLogin } from "../utils/auth";
 
+
 const INTIAL_USER ={
   name:"",
   email:"",
