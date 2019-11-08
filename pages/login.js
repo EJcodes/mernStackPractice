@@ -4,7 +4,7 @@ import  Link from 'next/link';
 import axios from 'axios';
 import catchErrors from '../utils/catchErrors';
 import baseUrl from '../utils/baseUrl';
-import {handleLogin} from '../utils/auth';
+import { handleLogin } from '../utils/auth';
 
 
 const INTIAL_USER ={
@@ -32,16 +32,16 @@ function Signup() {
   async function handleSubmit() {
     event.preventDefault();
     try { 
-      setLoading(true)
-      setError("")
-      const url = `${baseUrl}/api/login`
-      const payload = { ...user }
-      const response = await axios.post(url , payload)
-      handleLogin(response.data)
+      setLoading(true);
+      setError("");
+      const url = `${baseUrl}/api/login`;
+      const payload = { ...user };
+      const response = await axios.post(url , payload);
+      handleLogin(response.data);
     } catch (error) {
-      catchErrors(error, setError)
+      catchErrors(error, setError);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
   return <>

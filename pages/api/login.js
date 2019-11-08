@@ -6,16 +6,17 @@ import jwt from 'jsonwebtoken';
 connectDb()
 
 export default async (req, res) => {
-    const {email, password } = req.body
+    const { email, password } = req.body
     try {
-        // 1) check to see if a user exists with the provided email
+        // 1) check to see if a user exists with the provided in the email field.
         const user = User.findOne({ email }).select('+passworrd');
         // 2) If not return an error 
         if (!user) {
-            return res.status(404).send("No user exists with the email you provided")
+            return res.status(404).send("No user exists with the email provided")
         }
         // 3) Check to see if user pw matches the one associated w/ pw in DB
         const passwordsMatch = await bcrypt.compare(password, user.password);
+        //.compare() is Javascript method not next.js method
         // 4) if so, generate a token 
         if(passwordsMatch) {
             const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d'});
