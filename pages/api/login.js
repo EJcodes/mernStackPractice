@@ -17,9 +17,8 @@ export default async (req, res) => {
         // 3) Check to see if user pw matches the one associated w/ pw in DB
         const passwordsMatch = await bcrypt.compare(password, user.password);
         // 4) if so, generate a token 
-        if(passwordsMatch){
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d'})
-        process.env.JWT_SECRET, { expiresIn: '7D'})
+        if(passwordsMatch) {
+            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d'});
         // 5) SEND THAT TOKEN TO CLIENT 
         res.status(200).json(token)
         } else { 

@@ -17,7 +17,7 @@ function Signup() {
   const [user, setUser] = React.useState(INTIAL_USER);
   const [disabled, setDisabled] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
-  const [error,setError] = React.useState('')
+  const [error,setError] = React.useState("")
 
   React.useEffect(() => {
     const isUser = Object.values(user).every(el => Boolean(el));
@@ -31,6 +31,7 @@ function Signup() {
 
   async function handleSubmit() {
     event.preventDefault();
+    
     try { 
       setLoading(true)
       setError("")

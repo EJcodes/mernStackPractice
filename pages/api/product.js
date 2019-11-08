@@ -26,7 +26,7 @@ async function handleGetRequest(req, res) {
       res.status(200).json(product);
 }
 
-async function handlePostRequest(req, res){
+async function handlePostRequest(req, res) {
     const { name, price, description, mediaUrl } = req.body;
     try{
         if (!name || !price || !description || !mediaUrl ) {
