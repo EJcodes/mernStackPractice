@@ -26,26 +26,27 @@ function Signup() {
   
   function handleChange(event) {
     const {name, value} = event.target;
-    setUser(prevState => ({...prevState, [name]:value }));
+    setUser(prevState => ({ ...prevState, [name]:value }));
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(event) {
     event.preventDefault();
     
     try { 
-      setLoading(true)
-      setError("")
-      const url = `${baseUrl}/api/signup`
+      setLoading(true);
+      setError("");
+      const url = `${baseUrl}/api/signup`;
       const payload = { ...user };
-      const response = await axios.post(url, payload)
-      handleLogin(response.data)
+      const response = await axios.post(url, payload);
+      handleLogin(response.data);
     } catch (error) {
-      catchErrors(error, setError)
+      catchErrors(error, setError);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
-  return <>
+  return (
+  <>
     <Message attached icon="settings" header="Get Started!" content="Create a new account" color="teal" />
   
   <Form error={Boolean(error)} loading={loading} onSubmit={handleSubmit}>
@@ -65,10 +66,11 @@ function Signup() {
   Existing user?{" "}
   <Link href="/login">
     <a>Log in here</a>
-  </Link>{" "}instead.
+  </Link>{" "} instead.
 
 
-  </>;
+  </>
+  );
 }
 
 export default Signup;

@@ -13,7 +13,7 @@ export default async (req, res) => {
 
     try{
         // 1) Validate a name / email / passwords values 
-        if (!isLength(name, {min: 3, max: 10})){
+        if (!isLength(name, {min: 3, max: 10})) {
             return res.status(422).send("Name must be at least 3-10 characters long");
         } else if (!isLength(password, {min: 6 })){
             return res.status(422).send("Password must be at least 6 characters long");
@@ -33,15 +33,15 @@ export default async (req, res) => {
             email,
             password: hash
         }).save();
-        console.log({newUser});
+        console.log({ newUser });
         // 5)  Create a cart for the new user
         await new Cart({ user: newUser._id }).save();
         // 6) create a token for the new user
-         const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '7d'});
-        // 7) send back token 
+        const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        // 7) send back token
         res.status(201).json(token);
     } catch (error)  {
         console.error(error)
         res.status(500).send("Error signup user. Please try again later")
     }
-}
+};
