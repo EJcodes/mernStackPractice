@@ -1,6 +1,6 @@
 import App from "next/app";
 import Layout from "../components/_App/Layout";
-import { parseCookies } from 'nookies';
+import { parseCookies, destroyCookie } from 'nookies';
 import { redirectUser } from '../utils/auth';
 import baseUrl from '../utils/baseUrl';
 import axios from 'axios';
@@ -12,7 +12,6 @@ class MyApp extends App {
   static async getInitialPros({ Component, ctx }){
     const { token } = parseCookies(ctx);
     
-
     let pageProps = {};
 
     if (Component.getIntialPros){
@@ -20,25 +19,30 @@ class MyApp extends App {
     }
 
     if(!token) {
-      const isProtectedRoute = ctx.pathname === '/account' || ctx.pathname === '/create'
+      const isProtectedRoute = ctx.pathname === '/account' || ctx.pathname === '/create';
       if (isProtectedRoute) {
-        redirectUser(ctx, '/login')
+        redirectUser(ctx, '/login');
+      }
       } else {
         // since we are trying to make a request to an end point we will setup up a try/catch here.
         try {
-          const payload = { headers: { Authorization: token } }
-          const url = `${baseUrl}/api/account`
-          const response = await axios.get(url, payload)
-          const user = response.data
+          const payload = { headers: { Authorization: token } };
+          const url = `${baseUrl}/api/account`;
+          const response = await axios.get(url, payload);
+          const user = response.data;
           pageProps.user = user;
-        } catch(error) {
+        } catch (error) {
           console.error("Error getting current user", error);
+          // 1) Throw out invalid token
+          destroyCookie(ctx, "token");
+          // 2) Redirect to login
+          redirectUser(ctx, "/login");
 
         }
       }
-    }
+    
 
-    return { pageProps }
+    return { pageProps };
   }
 
   render() {

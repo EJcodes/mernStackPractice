@@ -48343,7 +48343,7 @@ var partitionHTMLProps = function partitionHTMLProps(props) {
 /*!*************************************************************!*\
   !*** ./node_modules/semantic-ui-react/dist/es/lib/index.js ***!
   \*************************************************************/
-/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, eventStack, getUnhandledProps, getElementType, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff, handleRef, isRefObject, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph */
+/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, eventStack, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph, getUnhandledProps, getElementType, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff, handleRef, isRefObject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62234,13 +62234,13 @@ function (_App) {
       return __jsx(_components_App_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 51
         },
         __self: this
       }), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 52
         },
         __self: this
       })));
@@ -62274,55 +62274,57 @@ function (_App) {
 
               case 7:
                 if (token) {
-                  _context.next = 26;
+                  _context.next = 12;
                   break;
                 }
 
                 isProtectedRoute = ctx.pathname === '/account' || ctx.pathname === '/create';
 
-                if (!isProtectedRoute) {
-                  _context.next = 13;
-                  break;
+                if (isProtectedRoute) {
+                  Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, '/login');
                 }
 
-                Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, '/login');
-                _context.next = 26;
+                _context.next = 27;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 12:
+                _context.prev = 12;
                 payload = {
                   headers: {
                     Authorization: token
                   }
                 };
                 url = "".concat(_utils_baseUrl__WEBPACK_IMPORTED_MODULE_13__["default"], "/api/account");
-                _context.next = 18;
+                _context.next = 17;
                 return axios__WEBPACK_IMPORTED_MODULE_14___default.a.get(url, payload);
 
-              case 18:
+              case 17:
                 response = _context.sent;
                 user = response.data;
                 pageProps.user = user;
-                _context.next = 26;
+                _context.next = 27;
                 break;
 
-              case 23:
-                _context.prev = 23;
-                _context.t0 = _context["catch"](13);
-                console.error("Error getting current user", _context.t0);
+              case 22:
+                _context.prev = 22;
+                _context.t0 = _context["catch"](12);
+                console.error("Error getting current user", _context.t0); // 1) Throw out invalid token
 
-              case 26:
+                Object(nookies__WEBPACK_IMPORTED_MODULE_11__["destroyCookie"])(ctx, "token"); // 2) Redirect to login
+
+                Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, "/login");
+
+              case 27:
                 return _context.abrupt("return", {
                   pageProps: pageProps
                 });
 
-              case 27:
+              case 28:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[13, 23]]);
+        }, _callee, null, [[12, 22]]);
       }));
 
       function getInitialPros(_x) {
