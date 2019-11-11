@@ -61,14 +61,13 @@ function Signup() {
       <Button disabled={disabled || loading } icon="signup" type="submit" color="orange" content="Signup" />
     </Segment>
   </Form>
-  <Message attached="bottom" warning />
+  <Message attached="bottom" warning >
   <Icon name="help"/>
   Existing user?{" "}
   <Link href="/login">
     <a>Log in here</a>
   </Link>{" "} instead.
-
-
+  </Message>
   </>
   );
 }
