@@ -3,13 +3,13 @@ import User from '../../models/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-connectDb()
+connectDb();
 
 export default async (req, res) => {
     const { email, password } = req.body
     try {
         // 1) check to see if a user exists with the provided in the email field.
-        const user = User.findOne({ email }).select('+passworrd');
+        const user = await User.findOne({ email }).select('+passworrd');
         // 2) If not return an error 
         if (!user) {
             return res.status(404).send("No user exists with the email provided")
@@ -23,12 +23,11 @@ export default async (req, res) => {
         // 5) SEND THAT TOKEN TO CLIENT 
         res.status(200).json(token)
         } else { 
-            res.statu(401).send("Passwords do not match")
+            res.statu(401).send("Passwords do not match");
         }
     }catch (error) {
         console.error(error)
-        res.status(500).send("Error logging in user")
+        res.status(500).send("Error logging in user");
     }
-
-}
+};
         
