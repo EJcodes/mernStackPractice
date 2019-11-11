@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 
 const { String } = mongoose.Schema.Types;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema(
+    {
     name:{
         type: String,
         required: true
@@ -22,10 +23,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: 'user',
-        enum: ["user", "admin", "root"],
-        
-    }
-}, {
+        enum: ["user", "admin", "root"]}
+    }, 
+{
     timestamps: true
 })
 
