@@ -13,7 +13,7 @@ export function redirectUser(ctx, location){
         ctx.res.writeHead(302, { Location: location }); // status code 302 is status code specifically to say we are performing url redirect.
         ctx.res.end(); // to stop writing to to this response 
     } else {
-        Router.push(location)
+        Router.push(location);
     }
 
 }

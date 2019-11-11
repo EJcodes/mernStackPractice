@@ -14,7 +14,7 @@ export default async (req, res) => {
         // 1) Validate a name / email / passwords values 
         if (!isLength(name, {min: 3, max: 10})) {
             return res.status(422).send("Name must be at least 3-10 characters long");
-        } else if (!isLength(password, {min: 6 })){
+        } else if (!isLength(password, {min: 6 })) {
             return res.status(422).send("Password must be at least 6 characters long");
         } else if (!isEmail(email)) {
             return res.status(422).send("Email must be valid");
@@ -40,7 +40,7 @@ export default async (req, res) => {
         // 7) send back token
         res.status(201).json(token);
     } catch (error)  {
-        console.error(error)
-        res.status(500).send("Error signup user. Please try again later")
+        console.error(error);
+        res.status(500).send("Error signup user. Please try again later");
     }
 };

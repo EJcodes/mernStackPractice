@@ -18,15 +18,15 @@ export default async (req, res) => {
         const passwordsMatch = await bcrypt.compare(password, user.password);
         //.compare() is Javascript method not next.js method
         // 4) if so, generate a token 
-        if(passwordsMatch) {
+        if (passwordsMatch) {
             const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d'});
         // 5) SEND THAT TOKEN TO CLIENT 
-        res.status(200).json(token)
+        res.status(200).json(token);
         } else { 
-            res.statu(401).send("Passwords do not match");
+            res.status(401).send("Passwords do not match");
         }
-    }catch (error) {
-        console.error(error)
+    } catch (error) {
+        console.error(error);
         res.status(500).send("Error logging in user");
     }
 };

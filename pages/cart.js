@@ -5,10 +5,10 @@ import CartSummary from '../components/Cart/CartSummary';
 function Cart() {
   return (
     <Segment>
-      <CartItemList/>
-      <CartSummary/>
+      <CartItemList />
+      <CartSummary />
     </Segment>
-  )
+  );
 }
 
 export default Cart;
