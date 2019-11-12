@@ -1580,8 +1580,8 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
     } = Object(nookies__WEBPACK_IMPORTED_MODULE_4__["parseCookies"])(ctx);
     let pageProps = {};
 
-    if (Component.getIntialPros) {
-      pagePros = await Component.getInitialProps(ctx);
+    if (Component.getIntialProps) {
+      pageProps = await Component.getInitialProps(ctx);
     }
 
     if (!token) {

@@ -14,8 +14,8 @@ class MyApp extends App {
     
     let pageProps = {};
 
-    if (Component.getIntialPros){
-     pagePros = await Component.getInitialProps(ctx)
+    if (Component.getIntialProps) {
+     pageProps = await Component.getInitialProps(ctx)
     }
 
     if(!token) {

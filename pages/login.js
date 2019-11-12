@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Icon, Message, Segment} from 'semantic-ui-react';
+import { Button, Form, Icon, Message, Segment } from 'semantic-ui-react';
 import  Link from 'next/link';
 import axios from 'axios';
 import catchErrors from '../utils/catchErrors';
@@ -11,7 +11,7 @@ const INTIAL_USER ={
   email:"",
   password:"",
 
-}
+};
 
 function Signup() {
   const [user, setUser] = React.useState(INTIAL_USER);
@@ -26,7 +26,7 @@ function Signup() {
   
   function handleChange(event) {
     const { name, value } = event.target;
-    setUser(prevState => ({ ...prevState, [name]:value }));
+    setUser(prevState => ({ ...prevState, [name]: value }));
   }
 
   async function handleSubmit(event) {
