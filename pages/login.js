@@ -25,12 +25,13 @@ function Signup() {
   }, [user]) 
   
   function handleChange(event) {
-    const {name, value} = event.target;
-    setUser(prevState => ({...prevState, [name]:value }));
+    const { name, value } = event.target;
+    setUser(prevState => ({ ...prevState, [name]:value }));
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(event) {
     event.preventDefault();
+
     try { 
       setLoading(true);
       setError("");
@@ -44,7 +45,8 @@ function Signup() {
       setLoading(false);
     }
   }
-  return <>
+  return (
+  <>
     <Message attached icon="privacy" header="Welcome Back!" content="Login with email and password" color="blue" />
   
   <Form error={Boolean(error)} loading={loading} onSubmit={handleSubmit}>
@@ -54,7 +56,7 @@ function Signup() {
         fluid icon="envelope" iconPosition="left" label="Email" placeholder="Email" name="email" type="email" value={user.email} onChange={handleChange}/>
       <Form.Input
         fluid icon="lock" iconPosition="left" label="Password" placeholder="Password" name="password" type="password" value={user.password} onChange={handleChange}/>
-      <Button disabled={disabled || loading } icon="sign in" type="submit" color="orange" content="Login" />
+      <Button disabled={ disabled || loading } icon="sign in" type="submit" color="orange" content="Login" />
     </Segment>
   </Form>
   <Message attached="bottom" warning />
@@ -63,9 +65,9 @@ function Signup() {
   <Link href="/signup">
     <a>sign up here</a>
   </Link>{" "}instead.
-
-
-  </>;
+  </>
+  );
 }
+  
 
 export default Signup;

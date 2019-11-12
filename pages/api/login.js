@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 connectDb();
 
 export default async (req, res) => {
-    const { email, password } = req.body
+    const { email, password } = req.body;
     try {
         // 1) check to see if a user exists with the provided in the email field.
         const user = await User.findOne({ email }).select('+passworrd');
