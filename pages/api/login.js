@@ -9,7 +9,7 @@ export default async (req, res) => {
     const { email, password } = req.body;
     try {
         // 1) check to see if a user exists with the provided in the email field.
-        const user = await User.findOne({ email }).select('+passworrd');
+        const user = await User.findOne({ email }).select('+password');
         // 2) If not return an error 
         if (!user) {
             return res.status(404).send("No user exists with the email provided")
