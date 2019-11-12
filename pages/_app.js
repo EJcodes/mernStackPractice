@@ -9,12 +9,12 @@ import axios from 'axios';
 /*App class is executed on the server and its executed before anything else, its executed for everypage changed 
 example: everything you go to one page to another this is execute. So its an ideal place to fetch users data with the JWT token. */
 class MyApp extends App {
-  static async getInitialPros({ Component, ctx }){
+  static async getInitialProps({ Component, ctx }){
     const { token } = parseCookies(ctx);
     
     let pageProps = {};
 
-    if (Component.getIntialProps) {
+    if (Component.getInitialProps) {
      pageProps = await Component.getInitialProps(ctx)
     }
 
