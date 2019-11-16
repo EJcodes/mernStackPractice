@@ -62233,13 +62233,13 @@ function (_App) {
       return __jsx(_components_App_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 58
         },
         __self: this
       }), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 59
         },
         __self: this
       })));
@@ -62250,7 +62250,7 @@ function (_App) {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-        var Component, ctx, _parseCookies, token, pageProps, isProtectedRoute, payload, url, response, user;
+        var Component, ctx, _parseCookies, token, pageProps, isProtectedRoute, payload, url, response, user, isRoot, isAdmin, isNotPermitted;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -62283,7 +62283,7 @@ function (_App) {
                   Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, '/login');
                 }
 
-                _context.next = 27;
+                _context.next = 31;
                 break;
 
               case 12:
@@ -62300,12 +62300,21 @@ function (_App) {
               case 17:
                 response = _context.sent;
                 user = response.data;
+                isRoot = user.role === "root";
+                isAdmin = user.role === "admin"; // if authenticated , but of role 'admin' or 'root', redirect from '/create' page
+
+                isNotPermitted = (isRoot || isAdmin) && ctx.pathname === '/create';
+
+                if (isNotPermitted) {
+                  Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, '/');
+                }
+
                 pageProps.user = user;
-                _context.next = 27;
+                _context.next = 31;
                 break;
 
-              case 22:
-                _context.prev = 22;
+              case 26:
+                _context.prev = 26;
                 _context.t0 = _context["catch"](12);
                 console.error("Error getting current user", _context.t0); // 1) Throw out invalid token
 
@@ -62313,17 +62322,17 @@ function (_App) {
 
                 Object(_utils_auth__WEBPACK_IMPORTED_MODULE_12__["redirectUser"])(ctx, "/login");
 
-              case 27:
+              case 31:
                 return _context.abrupt("return", {
                   pageProps: pageProps
                 });
 
-              case 28:
+              case 32:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[12, 22]]);
+        }, _callee, null, [[12, 26]]);
       }));
 
       function getInitialProps(_x) {

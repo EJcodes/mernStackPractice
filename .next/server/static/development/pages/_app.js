@@ -1600,6 +1600,15 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
         const url = `${_utils_baseUrl__WEBPACK_IMPORTED_MODULE_6__["default"]}/api/account`;
         const response = await axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(url, payload);
         const user = response.data;
+        const isRoot = user.role === "root";
+        const isAdmin = user.role === "admin"; // if authenticated , but of role 'admin' or 'root', redirect from '/create' page
+
+        const isNotPermitted = (isRoot || isAdmin) && ctx.pathname === '/create';
+
+        if (isNotPermitted) {
+          Object(_utils_auth__WEBPACK_IMPORTED_MODULE_5__["redirectUser"])(ctx, '/');
+        }
+
         pageProps.user = user;
       } catch (error) {
         console.error("Error getting current user", error); // 1) Throw out invalid token
@@ -1623,13 +1632,13 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
     return __jsx(_components_App_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 58
       },
       __self: this
     }), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 59
       },
       __self: this
     })));
