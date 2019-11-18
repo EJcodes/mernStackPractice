@@ -4,6 +4,7 @@ import { parseCookies, destroyCookie } from 'nookies';
 import { redirectUser } from '../utils/auth';
 import baseUrl from '../utils/baseUrl';
 import axios from 'axios';
+import { Router } from "next/router";
 
 
 /*App class is executed on the server and its executed before anything else, its executed for everypage changed 
@@ -46,12 +47,20 @@ class MyApp extends App {
           redirectUser(ctx, "/login");
 
         }
-      }
+      }  
+      return { pageProps };
+    }
     
+    componentDidMount(){
+      window.addEventListener('storage',this.syncLogout);
+    }
 
-    return { pageProps };
-  }
-
+    syncLogout = event => {
+      if (event.key === 'logout'){
+        console.log("logged out from storage")
+        Router.pust('/login')
+      }
+    }
   render() {
     const { Component, pageProps } = this.props;
     return (
