@@ -62316,7 +62316,7 @@ function (_App) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(_this), "syncLogout", function (event) {
       if (event.key === 'logout') {
         console.log("logged out from storage");
-        next_router__WEBPACK_IMPORTED_MODULE_17__["Router"].pust('/login');
+        next_router__WEBPACK_IMPORTED_MODULE_17__["Router"].push('/login');
       }
     });
 

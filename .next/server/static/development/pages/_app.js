@@ -1628,7 +1628,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_3___default.a {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "syncLogout", event => {
       if (event.key === 'logout') {
         console.log("logged out from storage");
-        next_router__WEBPACK_IMPORTED_MODULE_9__["Router"].pust('/login');
+        next_router__WEBPACK_IMPORTED_MODULE_9__["Router"].push('/login');
       }
     });
   }
