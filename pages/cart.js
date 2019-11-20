@@ -18,10 +18,10 @@ function Cart({ products }) {
 Cart.getInitialProps =  async ctx => {
   const { token } = parseCookies(ctx)
   if (!token) {
-    return { products:[] };
+    return { products: [] };
   }
   const url = `${baseUrl}/api/cart`;
-  const payload = { header: { Authorization: token }};
+  const payload = { headers: { Authorization: token }};
   const response = await axios.get(url, payload); 
   return { products: response.data }
 }
