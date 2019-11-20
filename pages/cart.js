@@ -5,7 +5,8 @@ import { parseCookies } from 'nookies';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
 
-function Cart() {
+function Cart({ products }) {
+  console.log(products)
   return (
     <Segment>
       <CartItemList />
@@ -21,6 +22,7 @@ Cart.getInitialProps =  async ctx => {
   }
   const url = `${baseUrl}/api/cart`;
   const payload = { header: { Authorization: token }};
-  await axios.get(url, payload);
+  const response = await axios.get(url, payload); 
+  return { products: response.data }
 }
 export default Cart;

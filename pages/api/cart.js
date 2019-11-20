@@ -11,8 +11,13 @@ export default async (req, res) => {
     }
     try {
         const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
-        await Cart.findOne({ user: userId })
+        const cart = await Cart.findOne({ user: userId }).populate({
+            path: "products.product", 
+            model: "Product"
+        })
+        res.status(200).json(cart.products)
     } catch (error) {
-
+        console.error(error)
+        res.status(403).send("please login again")
     }
 }
