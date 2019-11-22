@@ -1,8 +1,10 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
+import { userRouter } from 'next/router';
 
 function AddProductToCart({ user }) {
  const [ quantity, setQuantity ] = React.useState(1);
+ const router = userRouter()
 
   return <Input 
     type="number"
@@ -18,7 +20,8 @@ function AddProductToCart({ user }) {
     } : {
       color:'blue',
       content: "Sign Up To Purchase",
-      icon: "signup"
+      icon: "signup",
+      onClick: () => router.push('/signup')
     }}
   />
 }
