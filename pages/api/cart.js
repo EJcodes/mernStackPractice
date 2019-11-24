@@ -5,6 +5,8 @@ import connectDb from '../../utils/connectDb';
 
 connectDb()
 
+const { ObjectId } = mongoose.Types; 
+
 export default async (req, res) => {
     switch (req.method) {
         case "GET":
@@ -24,7 +26,13 @@ export default async (req, res) => {
         return res.status(401).send("No authorization token");
     }
     try {
-        const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
+        const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
+        //get user cartbased on userID
+        const cart = await Cart.findOne({ user: userId });
+        // check if product already exists in cart
+        const productExists= cart.products.some(doc => ObjectId(productId) === doc.product);
+        //if so, increment quantity (by number provided to request)
+        // if not, add new product with given quantity 
         const cart = await Cart.findOne({ user: userId }).populate({
             path: "products.product", 
             model: "Product"
