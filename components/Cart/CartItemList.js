@@ -1,16 +1,40 @@
-import { Header, Segment, Button, Icon } from 'semantic-ui-react'
+import { Header, Segment, Button, Icon, Item } from 'semantic-ui-react'
+import { useRouter } from 'next/router'
 
-function CartItemList() {
-  const user = false;
-  return (
-    <Segment secondary color="teal" inverted textAlign="center" placeholder>
+function CartItemList({ products, user}) {
+  const router = useRouter();
+
+  function MapCartProductsToItems(products) {
+    return products.map(p => ({
+      childKey: p.product._id,
+      header: (
+        <Item.Header as="a" onClick={()=> router.push(`/product?_id=${p.porduct._id}`)}>
+          {p.product.name}
+        </Item.Header>
+      ),
+      image: p.product.mediaUrl,
+      meta: `${p.quantity} x $${p.product.price}`,
+      fluid: "true",
+      extra: (
+        <Button
+          basic 
+          icon="remove"
+          floated="right"
+          onClick={() => console.log(p.product._id)}
+        />
+      )
+    }))
+  }
+  if (products.length === 0) {
+    return (
+      <Segment secondary color="teal" inverted textAlign="center" placeholder>
       <Header icon>
         <Icon name="shopping basket" />
         No Products in your cart. Add Some Now!
       </Header>
       <div>
         {user? (
-          <Button color="orange">
+          <Button color="orange" onClick={()=> router.push('/')}>
             View Products
           </Button>
         ) : (
@@ -20,7 +44,10 @@ function CartItemList() {
         )}
       </div>
     </Segment>
-  )
+    );
+  }
+
+  return <Item.Group items={MapCartProductsToItems(products)}/>
 }
 
 export default CartItemList;
