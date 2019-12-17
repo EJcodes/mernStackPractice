@@ -4,11 +4,11 @@ import { useRouter } from 'next/router'
 function CartItemList({ products, user}) {
   const router = useRouter();
 
-  function MapCartProductsToItems(products) {
+  function mapCartProductsToItems(products) {
     return products.map(p => ({
       childKey: p.product._id,
       header: (
-        <Item.Header as="a" onClick={()=> router.push(`/product?_id=${p.porduct._id}`)}>
+        <Item.Header as="a" onClick={()=> router.push(`/product?_id=${p.product._id}`)}>
           {p.product.name}
         </Item.Header>
       ),
@@ -47,7 +47,7 @@ function CartItemList({ products, user}) {
     );
   }
 
-  return <Item.Group items={MapCartProductsToItems(products)}/>
+  return <Item.Group items={mapCartProductsToItems(products)}/>
 }
 
 export default CartItemList;
