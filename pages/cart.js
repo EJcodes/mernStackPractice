@@ -9,8 +9,11 @@ function Cart({ products, user }) {
   console.log(products);
   return (
     <Segment>
-      <CartItemList user={ user } products={ products }/>
-      <CartSummary />
+      <CartItemList 
+      user={ user } 
+      products={ products }
+      />
+      <CartSummary products={[products]}/>
     </Segment>
   );
 }
