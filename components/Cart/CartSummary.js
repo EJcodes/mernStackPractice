@@ -8,12 +8,15 @@ function CartSummary({ products }) {
   const [isCartEmpty, setCartEmpty] = React.useState(false);
 
   React.useEffect(() => {
+    const { cartTotal, stripeTotal } = calculateCartTotal(products)
+    setCartAmount(cartTotal)
+    setStripeAmount(stripeTotal)
     setCartEmpty(products.length === 0);
   }, [products]);
   return <>
     <Divider/>
     <Segment clearing size="large">
-      <strong>sub total:</strong>$0.00
+      <strong>sub total:</strong> ${cartAmount}
       <Button
       disabled={isCartEmpty} 
 
