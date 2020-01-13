@@ -19,7 +19,6 @@ function CartSummary({ products }) {
       <strong>sub total:</strong> ${cartAmount}
       <Button
       disabled={isCartEmpty} 
-
       icon="cart" color="teal" floated="right" content="Checkout"/>
     </Segment>
   </>
