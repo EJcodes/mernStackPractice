@@ -26,7 +26,7 @@ function Cart({ products, user }) {
       <CartItemList 
       handleRemoveFromCart = {handleRemoveFromCart}
       user={ user } products={ cartProducts } />
-      <CartSummary products={cartProducts} />
+      <CartSummary products={ cartProducts } />
     </Segment>
   );
 }
