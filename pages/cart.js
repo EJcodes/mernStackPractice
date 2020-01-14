@@ -20,13 +20,17 @@ function Cart({ products, user }) {
     const response = await axios.delete(url, payload);
     setCartProducts(response.data);
   }
+
+  async function handleCheckout() {
+
+  }
   
   return (
     <Segment>
       <CartItemList 
       handleRemoveFromCart = {handleRemoveFromCart}
       user={ user } products={ cartProducts } />
-      <CartSummary products={ cartProducts } />
+      <CartSummary products={ cartProducts }  handleCheckout={handleCheckout}/>
     </Segment>
   );
 }
