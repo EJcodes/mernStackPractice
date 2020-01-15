@@ -26,6 +26,7 @@ function CartSummary({ products, handleCheckout, sucess }) {
         shippingAddress={true}
         billingAddress={true}
         zipCode={true}
+        stripeKey="pk_test_xfXh3VRPXdRyrseo4vx6A4lp00sXUf6oCo"
         token={handleCheckout}
         triggerEvent="onClick">
       <Button
