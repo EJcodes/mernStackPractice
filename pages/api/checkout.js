@@ -53,7 +53,7 @@ export default async (req,res) => {
             Products: cart.products
         }).save() 
         // 8) Clear products in cart 
-        await Cart.findOneAndUpdata(
+        await Cart.findOneAndUpdate(
             { _id: cart._id },
             { $set: { products: [] } }
         )
