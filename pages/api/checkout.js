@@ -1,8 +1,9 @@
 import Stripe from 'stripe';
 import uuidv4 from 'uuid/v4';
 import jwt from 'jsonwebtoken';
-import cart from '../../models/Cart';
+import Cart from '../../models/Cart';
 import calculateCartTotal from '../../utils/calculateCartTotal';
+import Cart from '../../models/Cart';
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -11,9 +12,42 @@ export default async (req,res) => {
 
     try {
         // 1) Verify and get user id from token
+        const { userId } = jwt.verify(req.headers.authorization, process.envJWT_SECRET);
         // 2) Find cart based on user id, populate it
+        const cart = await Cart.findOne({ user: userId }).populate({
+            path: "products.product",
+            model: "Product"
+        })
         // 3) Calculate cart totals again from cart products
-        // 4) Get email for payment data, see if email is linked w/ existing
+        const { cartTotal, stripeTotal } = calculateCartTotal(cart.products);
+        // 4) Get email for payment data, see if email is linked w/ existing Stripe customer 
+            const prevCustomer = await stripe.customers.list({
+                email: paymentData.email,
+                limit: 1,
+            })
+            const isExistingCustomer = prevCustomer.data.length > 0;
+        // 5) If not existing customer, create them based on their email.
+            let newCustomer;
+            if(!isExistingCustomer) {
+                await stripe.customers.create({
+                    email: paymentData.email,
+                    source: paymentData.id
+                })
+            }
+            const customer = (isExistingCustomer && prevCustomer.data[0].id) || newCustomer.id;
+        // 6) Create charge with total, send receipt email to our users
+        const charge = await stripe.charges.create({
+            currency: "usd",
+            amount: stripeTotal,
+            receipt_email: paymentData.email,
+            customer,
+            description: `Checkout | ${paymentData.email} | ${paymentData.id}`
+        }, {
+            idempotency_key: uuidv4() // this the customer is not charged twice for w/e reason by associating each charge w/ a unique string.
+        })
+        // 7) Add order data to database 
+        // 8) Clear products in cart 
+        // 9) Send back success (200) response 
     } catch (error) {
         
     }
