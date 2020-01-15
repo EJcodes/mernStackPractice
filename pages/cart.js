@@ -29,7 +29,7 @@ function Cart({ products, user }) {
       setLoading(true);
       const url =  `${baseUrl}/api/checkout`;
       const token = cookie.get('token');
-      const payload = { paymentDat };
+      const payload = { paymentData };
       const headers = { headers: {Authorization: token }};
       await axios.post(url, payload, headers);
       setSuccess(true);
