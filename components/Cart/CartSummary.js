@@ -22,7 +22,7 @@ function CartSummary({ products, handleCheckout, sucess }) {
         name="React Reserve"
         amount={stripeAmount}
         image={products.length > 0 ? products[0].product.mediaUrl : ""}
-        currency="USD1"
+        currency="USD"
         shippingAddress={true}
         billingAddress={true}
         zipCode={true}

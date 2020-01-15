@@ -37,7 +37,7 @@ export default async (req,res) => {
             const customer = (isExistingCustomer && prevCustomer.data[0].id) || newCustomer.id;
         // 6) Create charge with total, send receipt email to our users
         const charge = await stripe.charges.create({
-            currency: "usd",
+            currency: "USD",
             amount: stripeTotal,
             receipt_email: paymentData.email,
             customer,
