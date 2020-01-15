@@ -2,8 +2,8 @@ import Stripe from 'stripe';
 import uuidv4 from 'uuid/v4';
 import jwt from 'jsonwebtoken';
 import Cart from '../../models/Cart';
+import Order from '../../models/Order';
 import calculateCartTotal from '../../utils/calculateCartTotal';
-import Cart from '../../models/Cart';
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -45,10 +45,22 @@ export default async (req,res) => {
         }, {
             idempotency_key: uuidv4() // this the customer is not charged twice for w/e reason by associating each charge w/ a unique string.
         })
-        // 7) Add order data to database 
+        // 7) Add order data to database
+        await new Order({
+            user: userId,
+            email: paymentData.email,
+            total: cartTotal,
+            Products: cart.products
+        }).save() 
         // 8) Clear products in cart 
+        await Cart.findOneAndUpdata(
+            { _id: cart._id },
+            { $set: { products: [] } }
+        )
         // 9) Send back success (200) response 
+        res.status(200).send("Checkout successful")
     } catch (error) {
-        
+        console.error(error);
+        res.status(500).send("Error processing charge");
     }
 }
