@@ -13,7 +13,7 @@ export default async (req,res) => {
     try {
         // 1) Verify and get user id from token
         const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
-        // 2) Find cart based on user id, populate it
+        // 2) Find cart based on user Y, populate it
         const cart = await Cart.findOne({ user: userId }).populate({
             path: "products.product",
             model: "Product"
@@ -64,3 +64,4 @@ export default async (req,res) => {
         res.status(500).send("Error processing charge");
     }
 }
+
